@@ -12,42 +12,40 @@ import datos.conexion;
  */
 public class Producto {
     
-    private String art_cod;
-    private String art_nom;
-    private String art_uni;
-    private int art_pre;
-    private int art_stock;
-    private String art_marca;
+    private String pro_cod;
+    private String pro_nom;
+    private String pro_uni;
+    private int pro_pre;
+    private int pro_stock;
+    private String pro_marca;
     
-    public String EliminarArticulo(){
+    public String EliminarProducto(){
         
-        conexion clase_conexion=new conexion();
+        conexion clase_conexion = new conexion();
         
-        String palabra="delete from articulo where art_cod='"+this.getArt_cod()+"'";
+        String palabra = "delete from productos where pro_cod='" + this.getPro_cod() + "'";
         return clase_conexion.Ejecutar(palabra);
     }
     
-    public String GrabarArticulo(){
+    public String GrabarProducto(){
         
-        conexion clase_conexion=new conexion();
+        conexion clase_conexion = new conexion();
        
-        String palabra="insert into articulo values ('"+this.getArt_cod()+"','"
-                +this.getArt_marca()+"','"+this.getArt_nom()+"','"+this.getArt_pre()+"','"+
-                this.getArt_stock()+"','"+this.getArt_uni()+"')";
-                
-                
+        String palabra = "insert into productos values ('" + this.getPro_cod() + "','"
+                + this.getPro_marca() + "','" + this.getPro_nom() + "','" + this.getPro_pre() + "','"
+                + this.getPro_stock() + "','" + this.getPro_uni() + "')";
                 
         return clase_conexion.Ejecutar(palabra);
     }
     
-    public String EditarArticulo(){
+    public String EditarProducto(){
         
-        conexion clase_conexion=new conexion();
+        conexion clase_conexion = new conexion();
     
-        String palabra="update articulo set art_nom='"+this.getArt_nom()+
-                "',art_uni='"+this.getArt_uni()+"',art_pre='"+this.getArt_pre()+
-                "',art_stock='"+this.getArt_stock()+"',art_marca='"+
-                this.getArt_marca()+"' where art_cod='"+this.getArt_cod()+"'";
+        String palabra = "update productos set pro_nom='" + this.getPro_nom() +
+                "',pro_uni='" + this.getPro_uni() + "',pro_pre='" + this.getPro_pre() +
+                "',pro_stock='" + this.getPro_stock() + "',pro_marca='"
+                + this.getPro_marca() + "' where pro_cod='" + this.getPro_cod() + "'";
         return clase_conexion.Ejecutar(palabra);
                 
     }
@@ -57,19 +55,19 @@ public class Producto {
         
         try{
             
-            conexion clase_conexion=new conexion();
+            conexion clase_conexion = new conexion();
             
-            ResultSet tabla=clase_conexion.Listar("select * from articulo;");
+            ResultSet tabla = clase_conexion.Listar("select * from productos;");
             Producto producto;
             
             while(tabla.next()){
                 producto = new Producto();
-                producto.setArt_cod(tabla.getString("art_cod"));
-                producto.setArt_nom(tabla.getString("art_nom"));
-                producto.setArt_uni(tabla.getString("art_uni"));
-                producto.setArt_pre(tabla.getInt("art_pre"));
-                producto.setArt_stock(tabla.getInt("art_stock"));
-                producto.setArt_marca(tabla.getString("art_marca"));
+                producto.setPro_cod(tabla.getString("pro_cod"));
+                producto.setPro_nom(tabla.getString("pro_nom"));
+                producto.setPro_uni(tabla.getString("pro_uni"));
+                producto.setPro_pre(tabla.getInt("pro_pre"));
+                producto.setPro_stock(tabla.getInt("pro_stock"));
+                producto.setPro_marca(tabla.getString("pro_marca"));
                 lista_producto.add(producto);
                 
             }
@@ -81,66 +79,53 @@ public class Producto {
         return lista_producto;
     }
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public String getArt_cod() {
-        return art_cod;
+    public String getPro_cod() {
+        return pro_cod;
     }
 
-    public void setArt_cod(String art_cod) {
-        this.art_cod = art_cod;
+    public void setPro_cod(String pro_cod) {
+        this.pro_cod = pro_cod;
     }
 
-    public String getArt_nom() {
-        return art_nom;
+    public String getPro_nom() {
+        return pro_nom;
     }
 
-    public void setArt_nom(String art_nom) {
-        this.art_nom = art_nom;
+    public void setPro_nom(String pro_nom) {
+        this.pro_nom = pro_nom;
     }
 
-    public String getArt_uni() {
-        return art_uni;
+    public String getPro_uni() {
+        return pro_uni;
     }
 
-    public void setArt_uni(String art_uni) {
-        this.art_uni = art_uni;
+    public void setPro_uni(String pro_uni) {
+        this.pro_uni = pro_uni;
     }
 
-    public int getArt_pre() {
-        return art_pre;
+    public int getPro_pre() {
+        return pro_pre;
     }
 
-    public void setArt_pre(int art_pre) {
-        this.art_pre = art_pre;
+    public void setPro_pre(int pro_pre) {
+        this.pro_pre = pro_pre;
     }
 
-    public int getArt_stock() {
-        return art_stock;
+    public int getPro_stock() {
+        return pro_stock;
     }
 
-    public void setArt_stock(int art_stock) {
-        this.art_stock = art_stock;
+    public void setPro_stock(int pro_stock) {
+        this.pro_stock = pro_stock;
     }
 
-    public String getArt_marca() {
-        return art_marca;
+    public String getPro_marca() {
+        return pro_marca;
     }
 
-    public void setArt_marca(String art_marca) {
-        this.art_marca = art_marca;
+    public void setPro_marca(String pro_marca) {
+        this.pro_marca = pro_marca;
     }
-    
-    
     
     
     

@@ -43,12 +43,12 @@ public class Presentacion extends javax.swing.JFrame {
         tabla.setRowCount(lista_auxiliar_de_productos.size());
         int i=0;
         for(Producto producto_aux: lista_auxiliar_de_productos){
-            tabla.setValueAt(producto_aux.getArt_cod(), i,0);
-            tabla.setValueAt(producto_aux.getArt_nom(), i,1);
-            tabla.setValueAt(producto_aux.getArt_uni(), i,2);
-            tabla.setValueAt(producto_aux.getArt_pre(), i,3);
-            tabla.setValueAt(producto_aux.getArt_stock(), i,4);
-            tabla.setValueAt(producto_aux.getArt_marca(), i,5);
+            tabla.setValueAt(producto_aux.getPro_cod(), i,0);
+            tabla.setValueAt(producto_aux.getPro_nom(), i,1);
+            tabla.setValueAt(producto_aux.getPro_uni(), i,2);
+            tabla.setValueAt(producto_aux.getPro_pre(), i,3);
+            tabla.setValueAt(producto_aux.getPro_stock(), i,4);
+            tabla.setValueAt(producto_aux.getPro_marca(), i,5);
             i++;
         }
         this.jTable1.setModel(tabla);
@@ -309,13 +309,13 @@ public class Presentacion extends javax.swing.JFrame {
         }
         if (!esta_vacio){
             
-            producto_auxiliar.setArt_cod(this.codigo.getText());
-            producto_auxiliar.setArt_nom(this.nombre.getText());
-            producto_auxiliar.setArt_uni(this.unidad.getText());
-            producto_auxiliar.setArt_pre(Integer.parseInt(this.precio.getText()));
-            producto_auxiliar.setArt_stock(Integer.parseInt(this.cantidad.getText()));
-            producto_auxiliar.setArt_marca(this.marca.getText());
-            JOptionPane.showMessageDialog(null, producto_auxiliar.GrabarArticulo());
+            producto_auxiliar.setPro_cod(this.codigo.getText());
+            producto_auxiliar.setPro_nom(this.nombre.getText());
+            producto_auxiliar.setPro_uni(this.unidad.getText());
+            producto_auxiliar.setPro_pre(Integer.parseInt(this.precio.getText()));
+            producto_auxiliar.setPro_stock(Integer.parseInt(this.cantidad.getText()));
+            producto_auxiliar.setPro_marca(this.marca.getText());
+            JOptionPane.showMessageDialog(null, producto_auxiliar.GrabarProducto());
             ListarArticulos();
             
         }else{
@@ -359,13 +359,13 @@ public class Presentacion extends javax.swing.JFrame {
             
         }else{
             Producto producto_auxiliar=new Producto();
-            producto_auxiliar.setArt_cod(codigo.getText());
-            producto_auxiliar.setArt_nom(nombre.getText());
-            producto_auxiliar.setArt_uni(unidad.getText());
-            producto_auxiliar.setArt_pre(Integer.parseInt(precio.getText()));
-            producto_auxiliar.setArt_stock(Integer.parseInt(cantidad.getText()));
-            producto_auxiliar.setArt_marca(marca.getText());
-            JOptionPane.showMessageDialog(null, producto_auxiliar.EditarArticulo());
+            producto_auxiliar.setPro_cod(codigo.getText());
+            producto_auxiliar.setPro_nom(nombre.getText());
+            producto_auxiliar.setPro_uni(unidad.getText());
+            producto_auxiliar.setPro_pre(Integer.parseInt(precio.getText()));
+            producto_auxiliar.setPro_stock(Integer.parseInt(cantidad.getText()));
+            producto_auxiliar.setPro_marca(marca.getText());
+            JOptionPane.showMessageDialog(null, producto_auxiliar.EditarProducto());
             ListarArticulos();
         }
             
@@ -388,8 +388,8 @@ public class Presentacion extends javax.swing.JFrame {
         }
         if (Res==0){
             Producto producto_auxiliar=new Producto();
-            producto_auxiliar.setArt_cod(this.codigo.getText());
-            JOptionPane.showMessageDialog(null, producto_auxiliar.EliminarArticulo());
+            producto_auxiliar.setPro_cod(this.codigo.getText());
+            JOptionPane.showMessageDialog(null, producto_auxiliar.EliminarProducto());
             ListarArticulos();
             
             if (cod.isEmpty() || codigo_invalido){
