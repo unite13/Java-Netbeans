@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package negocios;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
+import java.util.ArrayList;
 import datos.conexion;
 import java.sql.*;
 
@@ -20,16 +20,16 @@ public class Insumos {
     private String medida; 
     private int precio_por_unidad;
     private String codigo;
-    private LocalDate fecha_adquision;
+    private Date fecha_adquision;
     
-    public String EliminarArticulo(){
+    public String EliminarInsumo(){
         conexion clase_conexion=new conexion();
         
         String palabra="delete from insumos where INS_CODI='"+this.getCodigo()+"'";
         return clase_conexion.Ejecutar(palabra);
     }
     
-    public String GrabarArticulo(){
+    public String GrabarInsumo(){
         
         conexion clase_conexion=new conexion();
      
@@ -43,7 +43,7 @@ public class Insumos {
     }
     
     
-    public String EditarArticulo(){
+    public String EditarInsumo(){
         
         conexion clase_conexion=new conexion();
     
@@ -55,7 +55,7 @@ public class Insumos {
                 
     }
     
-    public ArrayList<Insumos> ListaProducto(){
+    public ArrayList<Insumos> ListaInsumo(){
         ArrayList lista_insumos = new ArrayList();
         
         try{
@@ -66,14 +66,14 @@ public class Insumos {
             Insumos insumos;
             
             while(tabla.next()){
-                Insumos = new Insumos();
-                Insumos.setArt_cod(tabla.getString("art_cod"));
-                producto.setArt_nom(tabla.getString("art_nom"));
-                producto.setArt_uni(tabla.getString("art_uni"));
-                producto.setArt_pre(tabla.getInt("art_pre"));
-                producto.setArt_stock(tabla.getInt("art_stock"));
-                producto.setArt_marca(tabla.getString("art_marca"));
-                lista_producto.add(producto);
+                insumos = new Insumos();
+                insumos.setCodigo(tabla.getString("INS_CODI"));
+                insumos.setNombre(tabla.getString("INS_NOMB"));
+                insumos.setMedida(tabla.getString("INS_MEDIDA"));
+                insumos.setPrecio_por_unidad(tabla.getInt("INS_PRE_UNI"));
+                insumos.setCantidad(tabla.getInt("INS_CANT"));
+                insumos.setFecha_adquision(tabla.getDate("INS_FECHA"));
+                lista_insumos.add(insumos);
                 
             }
                 
@@ -81,7 +81,7 @@ public class Insumos {
         catch(SQLException e){
             javax.swing.JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        return lista_producto;
+        return lista_insumos;
     }
     
     
